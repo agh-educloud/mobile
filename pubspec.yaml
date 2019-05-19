@@ -1,0 +1,12 @@
+name: mobile
+version: 0.1.0
+authors:
+  - Piotr Kardaś
+  - Radosław Kozioł
+dependencies:
+  protobuf: ^0.13.11
+  grpc:
+    git:
+      url: https://github.com/grpc/grpc-dart
+      ref: grpc-web
+      resolved-ref: af63deb
