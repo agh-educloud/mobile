@@ -5,6 +5,7 @@ authors:
   - Radosław Kozioł
 dependencies:
   protobuf: ^0.13.11
+  random_string: ^0.0.2
   grpc:
     git:
       url: https://github.com/grpc/grpc-dart
