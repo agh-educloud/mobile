@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package mobile;
+
+import "user.proto";
+
+service ChatService {
+    rpc ExchangeMessages (stream ChatMessage) returns (stream ChatMessage);
+}
+
+message ChatMessage {
+    User sender = 1;
+    Message message = 2;
+}
+
+message Message {
+    string content = 1;
+    string timeStamp = 2;
+}
