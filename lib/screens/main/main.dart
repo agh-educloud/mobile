@@ -16,14 +16,17 @@ class Main extends StatelessWidget {
           new Padding(padding: EdgeInsets.all(5.0)),
           new GreyRoundedRectangle(),
           new Padding(padding: EdgeInsets.all(5.0)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              new GreyCircle(),
-              new GreyCircle(),
-              new GreyCircle()
-            ],
-          ),
+          new Container(
+            width: MediaQuery.of(context).size.width * 0.95,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new GreyCircle(),
+                new GreyCircle(),
+                new GreyCircle()
+              ],
+            ),
+          )
         ]))));
   }
 }
@@ -55,7 +58,7 @@ class GreyRoundedRectangle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: 90.0,
+      height: 100.0,
       width: MediaQuery.of(context).size.width * 0.95,
       color: Colors.transparent,
       child: new Container(
@@ -73,8 +76,8 @@ class GreyCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: 64,
-      width: 64,
+      height: 65,
+      width: 65,
       color: Colors.transparent,
       child: new Container(
           decoration: new BoxDecoration(
