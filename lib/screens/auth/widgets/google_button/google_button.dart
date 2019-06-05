@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/main/main.dart';
 import 'package:mobile/widgets/app_button.dart';
 
 class GoogleButton extends StatelessWidget {
@@ -13,6 +14,10 @@ class GoogleButton extends StatelessWidget {
       buttonName: "Zaloguj się kontem Google",
       onPressed: () {
         debugPrint("Google");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Main()),
+        );
       },
     );
   }
