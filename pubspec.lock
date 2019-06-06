@@ -67,6 +67,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_verification_code_input:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "5ebc1c1145cd72ed4e27fc29c9e3136753667fe8"
+      url: "git://github.com/tinylife-io/flutter_verification_code_input.git"
+    source: git
+    version: "0.1.1"
   googleapis_auth:
     dependency: transitive
     description:
@@ -74,6 +83,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.7"
+  gradient_text:
+    dependency: "direct main"
+    description:
+      name: gradient_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   grpc:
     dependency: "direct dev"
     description:

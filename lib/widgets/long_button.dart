@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AppButton extends StatelessWidget {
+class LongButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String buttonName;
   final Icon icon;
 
   //passing props in react style
-  AppButton({this.buttonName, this.onPressed, this.icon});
+  LongButton({this.buttonName, this.onPressed, this.icon});
 
   @override
   Widget build(BuildContext context) {

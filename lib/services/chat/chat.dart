@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:mobile/generated/user.pb.dart';
 
@@ -11,12 +12,11 @@ class Client {
 
   Client() {
     channel = new ClientChannel('localhost',
-        port: 9999,
+        port: 8080,
         options: const ChannelOptions(
             credentials: const ChannelCredentials.insecure()));
 
-    stub = new ChatServiceClient(channel,
-        options: new CallOptions(timeout: new Duration(seconds: 30)));
+    stub = new ChatServiceClient(channel);
   }
 
   Future<void> simulateChat() async {
@@ -42,7 +42,7 @@ class Client {
 
     final call = stub.exchangeMessages(outgoingChatMessages());
     await for (var chatMessage in call) {
-      print('${chatMessage.sender.name}: ${chatMessage.message.content}');
+      debugPrint('${chatMessage.sender.name}: ${chatMessage.message.content}');
     }
   }
 }
