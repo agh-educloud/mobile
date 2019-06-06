@@ -27,17 +27,19 @@ dependencies:
   flutter_verification_code_input:
     git:
       url: git://github.com/tinylife-io/flutter_verification_code_input.git
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  protobuf: ^0.13.11
   random_string: ^0.0.2
   grpc:
     git:
       url: https://github.com/grpc/grpc-dart
       ref: grpc-web
       resolved-ref: af63deb
+  protobuf: ^0.13.11
+  faker: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

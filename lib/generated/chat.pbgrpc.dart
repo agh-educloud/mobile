@@ -16,7 +16,7 @@ export 'chat.pb.dart';
 class ChatServiceClient extends $grpc.Client {
   static final _$exchangeMessages =
       $grpc.ClientMethod<ChatMessage, ChatMessage>(
-          '/mobile.ChatService/ExchangeMessages',
+          '/ChatService/ExchangeMessages',
           (ChatMessage value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => ChatMessage.fromBuffer(value));
 
@@ -32,7 +32,7 @@ class ChatServiceClient extends $grpc.Client {
 }
 
 abstract class ChatServiceBase extends $grpc.Service {
-  $core.String get $name => 'mobile.ChatService';
+  $core.String get $name => 'ChatService';
 
   ChatServiceBase() {
     $addMethod($grpc.ServiceMethod<ChatMessage, ChatMessage>(

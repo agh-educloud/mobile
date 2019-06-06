@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  faker:
+    dependency: "direct main"
+    description:
+      name: faker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   fixnum:
     dependency: transitive
     description:
@@ -91,11 +98,11 @@ packages:
     source: hosted
     version: "1.0.2"
   grpc:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: "."
       ref: grpc-web
-      resolved-ref: af63debc43163ebc6408ba2a97745bf41d081b27
+      resolved-ref: "8aa5b51760d520db87364ef5f2d10bc8227f236b"
       url: "https://github.com/grpc/grpc-dart"
     source: git
     version: "1.1.0"
@@ -149,12 +156,12 @@ packages:
     source: hosted
     version: "1.5.0"
   protobuf:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: protobuf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.11"
+    version: "0.13.12"
   quiver:
     dependency: transitive
     description:
@@ -163,7 +170,7 @@ packages:
     source: hosted
     version: "2.0.2"
   random_string:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: random_string
       url: "https://pub.dartlang.org"

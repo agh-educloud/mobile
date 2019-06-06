@@ -9,14 +9,16 @@ import 'package:random_string/random_string.dart' as random;
 class Client {
   ClientChannel channel;
   ChatServiceClient stub;
+  String name;
 
-  Client() {
-    channel = new ClientChannel('localhost',
-        port: 8080,
+  Client(String name) {
+    channel = new ClientChannel('0.0.0.0',
+        port: 50052,
         options: const ChannelOptions(
             credentials: const ChannelCredentials.insecure()));
 
     stub = new ChatServiceClient(channel);
+    this.name = name;
   }
 
   Future<void> simulateChat() async {
@@ -26,7 +28,7 @@ class Client {
 
         var sender = new User()
           ..uuid = "asfdsf"
-          ..name = "User2";
+          ..name = this.name;
 
         var message = new Message()
           ..content = random.randomString(10)
@@ -42,7 +44,8 @@ class Client {
 
     final call = stub.exchangeMessages(outgoingChatMessages());
     await for (var chatMessage in call) {
-      debugPrint('${chatMessage.sender.name}: ${chatMessage.message.content}');
+      debugPrint(
+          '${this.name} ${chatMessage.sender.name}: ${chatMessage.message.content}');
     }
   }
 }

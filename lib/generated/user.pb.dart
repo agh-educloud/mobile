@@ -9,7 +9,7 @@ import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, overr
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class User extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('User', package: const $pb.PackageName('mobile'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('User')
     ..aOS(1, 'uuid')
     ..aOS(2, 'name')
     ..hasRequiredFields = false

@@ -11,7 +11,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'user.pb.dart' as $0;
 
 class ChatMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ChatMessage', package: const $pb.PackageName('mobile'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ChatMessage')
     ..a<$0.User>(1, 'sender', $pb.PbFieldType.OM, $0.User.getDefault, $0.User.create)
     ..a<Message>(2, 'message', $pb.PbFieldType.OM, Message.getDefault, Message.create)
     ..hasRequiredFields = false
@@ -41,7 +41,7 @@ class ChatMessage extends $pb.GeneratedMessage {
 }
 
 class Message extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Message', package: const $pb.PackageName('mobile'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Message')
     ..aOS(1, 'content')
     ..aOS(2, 'timeStamp')
     ..hasRequiredFields = false

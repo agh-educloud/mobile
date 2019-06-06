@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mobile/screens/main/widgets/chat/message.dart';
 
 class ChatSpace extends StatelessWidget {
   @override
@@ -13,29 +14,29 @@ class ChatSpace extends StatelessWidget {
                 color: Color(0xffC4C4C4).withOpacity(0.19),
                 borderRadius: BorderRadius.all(Radius.circular(12))),
             child: Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: new RichText(
-                  textAlign: TextAlign.left,
-                  text: new TextSpan(
-                    children: <TextSpan>[
-                      new TextSpan(
-                        text: 'Hura!\n',
-                        style: new TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Oxygen',
-                            fontSize: 64),
-                      ),
-                      new TextSpan(
-                        text: 'Czat.',
-                        style: new TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Oxygen',
-                            fontSize: 18),
-                      ),
-                    ],
-                  )),
+              padding: const EdgeInsets.all(8.0),
+              child: new Column(
+                children: <Widget>[
+                  new MessageWithMetadata(
+                      text: "Ala ma kota\nzlosliwa\nwielo\nlinijkowa wiadomosc",
+                      name: "Czerwony Kapturek",
+                      date: "19:00"),
+                  new MessageWithMetadata(
+                      text: "Pozdrawiam cieplutko",
+                      name: "Wilk",
+                      date: "21:37"),
+                  new TextField(
+//                    controller: _textController,
+//                    onSubmitted: _handleSubmitted,
+                  style: new TextStyle(
+                      color: Colors.grey,
+                      fontFamily: 'Oxygen',
+                      fontSize: 10),
+                    decoration: new InputDecoration.collapsed(
+                        hintText: "Napisz wiadomość"),
+                  )
+                ],
+              ),
             )));
   }
 }
