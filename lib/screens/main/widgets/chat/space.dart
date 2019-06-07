@@ -20,18 +20,21 @@ class ChatSpace extends StatelessWidget {
                   new MessageWithMetadata(
                       text: "Ala ma kota\nzlosliwa\nwielo\nlinijkowa wiadomosc",
                       name: "Czerwony Kapturek",
-                      date: "19:00"),
+                      date: "19:00",
+                      icon: new Icon(Icons.favorite,
+                          color: Colors.red, size: 22.0)),
                   new MessageWithMetadata(
-                      text: "Pozdrawiam cieplutko",
+                      text:
+                          "Pozdrawiam cieplutko. Ta wiadomosc jest bardzo dluga, ale nie zawiera wprost znaków końca linii. Flutter sam podzieli te wiadomosc na kilka linii",
                       name: "Wilk",
-                      date: "21:37"),
+                      date: "21:37",
+                      icon: new Icon(Icons.directions_bike,
+                          color: Colors.blueAccent, size: 22.0)),
                   new TextField(
 //                    controller: _textController,
 //                    onSubmitted: _handleSubmitted,
-                  style: new TextStyle(
-                      color: Colors.grey,
-                      fontFamily: 'Oxygen',
-                      fontSize: 10),
+                    style: new TextStyle(
+                        color: Colors.grey, fontFamily: 'Oxygen', fontSize: 10),
                     decoration: new InputDecoration.collapsed(
                         hintText: "Napisz wiadomość"),
                   )
