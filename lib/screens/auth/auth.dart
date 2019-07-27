@@ -14,7 +14,7 @@ class Auth extends StatelessWidget {
               children: <Widget>[
                 new Logo(),
                 new LogoText(),
-                new Padding(padding: EdgeInsets.all(220.0)),
+                new Padding(padding: EdgeInsets.all(180.0)),
                 new FacebookButton(),
                 new GoogleButton()
               ],
