@@ -5,6 +5,22 @@ import 'package:mobile/screens/main/widgets/chat/message.dart';
 class ChatSpace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          new IncomingMessages(),
+          new Padding(padding: EdgeInsets.all(5.0)),
+          new NewMessage(),
+          new Padding(padding: EdgeInsets.all(20.0)),
+        ],
+      ),
+    );
+  }
+}
+
+class IncomingMessages extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return new Container(
         height: 600.0,
         width: MediaQuery.of(context).size.width * 0.95,
@@ -23,23 +39,48 @@ class ChatSpace extends StatelessWidget {
                       date: "19:00",
                       icon: new Icon(Icons.favorite,
                           color: Colors.red, size: 22.0)),
-                  new MessageWithMetadata(
-                      text:
-                          "Pozdrawiam cieplutko. Ta wiadomosc jest bardzo dluga, ale nie zawiera wprost znaków końca linii. Flutter sam podzieli te wiadomosc na kilka linii",
-                      name: "Wilk",
-                      date: "21:37",
-                      icon: new Icon(Icons.directions_bike,
-                          color: Colors.blueAccent, size: 22.0)),
-                  new TextField(
-//                    controller: _textController,
-//                    onSubmitted: _handleSubmitted,
-                    style: new TextStyle(
-                        color: Colors.grey, fontFamily: 'Oxygen', fontSize: 10),
-                    decoration: new InputDecoration.collapsed(
-                        hintText: "Napisz wiadomość"),
-                  )
                 ],
               ),
             )));
+  }
+}
+
+class NewMessage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: MediaQuery.of(context).size.width * 0.95,
+        height: 50.0,
+        color: Colors.transparent,
+        child: new Container(
+            decoration: new BoxDecoration(
+                color: Color(0xffC4C4C4).withOpacity(0.19),
+                borderRadius: BorderRadius.all(Radius.circular(12))),
+            child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: new TextField(
+                        style: new TextStyle(
+                            color: Colors.grey,
+                            fontFamily: 'Oxygen',
+                            fontSize: 12),
+                        decoration: new InputDecoration.collapsed(
+                            hintText: "Napisz wiadomość"),
+                      ),
+                    ),
+                    new Container(
+                      child: new IconButton(
+                        icon: new Icon(
+                          Icons.send,
+                          color: Color(0xff019875),
+                          size: 16.0,
+                        ),
+                        onPressed: () => {},
+                      ),
+                    )
+                  ],
+                ))));
   }
 }

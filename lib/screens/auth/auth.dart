@@ -26,7 +26,7 @@ class Auth extends StatelessWidget {
                 // Where the linear gradient begins and ends
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Color(0xff22C1C3), Color(0xffFCC349)],
+                colors: [Color(0xff536976), Color(0xff292E49)],
               ),
             )));
   }

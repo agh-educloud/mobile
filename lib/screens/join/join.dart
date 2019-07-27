@@ -18,7 +18,7 @@ class Join extends StatelessWidget {
                         new TextSpan(
                           text: 'WPISZ KOD ABY DOŁĄCZYĆ DO ZAJĘĆ\n',
                           style: new TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.w300,
                               fontFamily: 'Oxygen',
                               fontSize: 14),
@@ -28,10 +28,13 @@ class Join extends StatelessWidget {
                 new Padding(padding: EdgeInsets.all(20.0)),
                 new VerificationCodeInput(
                   keyboardType: TextInputType.number,
+                  textStyle: TextStyle(fontSize: 25.0, color: Color(0xff019875)),
                   length: 5,
                   onCompleted: (String value) {
-                    //...
                     print(value);
+                    Scaffold.of(context).showSnackBar(new SnackBar(
+                      content: new Text("Niepoprawny kod"),
+                    ));
                   },
                 )
               ],
@@ -43,7 +46,7 @@ class Join extends StatelessWidget {
                 // Where the linear gradient begins and ends
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Color(0xff22C1C3), Color(0xffFCC349)],
+                colors: [Color(0xff536976), Color(0xff292E49)],
               ),
             )));
   }

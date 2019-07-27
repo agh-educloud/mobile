@@ -12,7 +12,7 @@ class HomeworkButton extends StatelessWidget {
     return new RoundButton(
       icon: new Icon(
         Icons.border_color,
-        color: Color(0xffF39C12),
+        color: Color(0xff019875),
         size: 24.0,
       ),
       buttonName: "ZADANIA",

@@ -12,12 +12,11 @@ class ChatButton extends StatelessWidget {
     return new RoundButton(
       icon: new Icon(
         Icons.message,
-        color: Color(0xffE67E22),
+        color: Color(0xff019875),
         size: 24.0,
       ),
       buttonName: "CZAT",
       onPressed: () {
-        debugPrint("Czat");
         this.toggleToChat();
       },
     );

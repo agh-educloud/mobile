@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobile/screens/main/widgets/chat/chat.dart';
 import 'package:mobile/screens/main/widgets/chat/space.dart';
-import 'package:mobile/screens/main/widgets/degrees/degrees.dart';
+import 'package:mobile/screens/main/widgets/degrees/degree.dart';
 import 'package:mobile/screens/main/widgets/homework/homework.dart';
 import 'package:mobile/screens/main/widgets/homework/space.dart';
 import 'package:mobile/screens/main/widgets/join/join.dart';
@@ -17,17 +17,16 @@ class _MainState extends State<Main> {
   bool isHomework = true;
 
   void toggleToChat() {
-    setState(() { // notify flutter that state changed
+    setState(() {
+      // notify flutter that state changed
       this.isHomework = false;
     });
-    debugPrint(this.isHomework.toString());
   }
 
   void toggleToHomework() {
     setState(() {
       this.isHomework = true;
     });
-    debugPrint(this.isHomework.toString());
   }
 
   @override
@@ -40,18 +39,28 @@ class _MainState extends State<Main> {
                     children: <Widget>[
           new Padding(padding: EdgeInsets.all(20.0)),
           new MainWindowTitle(),
-          new DegreeMeanValue(),
+          new DegreeMeanValueWindow(
+            degree: 4.1,
+            description: "ŚREDNIA OCEN Z ZADAŃ\nDOMOWYCH",
+          ),
           new Padding(padding: EdgeInsets.all(5.0)),
-          new QuizMeanValue(),
+          new DegreeMeanValueWindow(
+            degree: 238.4,
+            description: "LICZBA PUNKTÓW\nUZYSKANYCH\nW QUIZACH",
+          ),
           new Padding(padding: EdgeInsets.all(5.0)),
           new Container(
             width: MediaQuery.of(context).size.width * 0.95,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                new HomeworkButton(toggleToHomework: toggleToHomework,),
+                new HomeworkButton(
+                  toggleToHomework: toggleToHomework,
+                ),
                 new JoinButton(),
-                new ChatButton(toggleToChat: toggleToChat,),
+                new ChatButton(
+                  toggleToChat: toggleToChat,
+                ),
               ],
             ),
           ),

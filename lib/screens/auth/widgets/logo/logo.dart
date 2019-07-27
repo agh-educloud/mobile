@@ -33,7 +33,7 @@ class LogoText extends StatelessWidget {
           TextSpan(
             text: 'MAŁOPOLSKA\n',
             style: TextStyle(
-                color: Color(0xff000C40).withOpacity(0.55),
+                color: Color(0xffffffff).withOpacity(0.55),
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Oxygen',
                 fontSize: 38),
@@ -41,7 +41,7 @@ class LogoText extends StatelessWidget {
           TextSpan(
             text: 'CHMURA EDUKACYJNA',
             style: TextStyle(
-                color: Color(0xff000C40).withOpacity(0.55),
+                color: Color(0xffffffff).withOpacity(0.55),
                 fontWeight: FontWeight.w300,
                 fontFamily: 'Oxygen',
                 fontSize: 23),

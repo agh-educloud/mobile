@@ -20,15 +20,7 @@ class GoogleButton extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => Main()),
         );
-        Future<void> main() async {
-          try {
-            await Client("XDD").simulateChat();
-          } catch (e) {
-            print('Caught error: $e');
-          }
-        }
 
-        main();
       },
     );
   }
