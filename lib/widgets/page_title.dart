@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+class PageTitle extends StatelessWidget {
+  final String text;
 
-class MainWindowTitle extends StatelessWidget {
+  PageTitle({this.text});
+
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -12,7 +15,7 @@ class MainWindowTitle extends StatelessWidget {
           text: TextSpan(
             children: <TextSpan>[
               TextSpan(
-                text: 'Strona głowna\n',
+                text: text + "\n",
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,

@@ -2,21 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class MessageWithMetadata extends StatelessWidget {
+class ChatMessageOnScreen extends StatelessWidget {
   final String text;
   final String name;
   final String date;
   final Icon icon;
+  final bool fromLocalDevice;
 
-  MessageWithMetadata({this.name, this.text, this.date, this.icon});
+  ChatMessageOnScreen(
+      {this.name, this.text, this.date, this.icon, this.fromLocalDevice});
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        new IconWindow(icon: icon),
-        new Padding(padding: EdgeInsets.all(2.0)),
+        fromLocalDevice ? Container() : new IconWindow(icon: icon),
+        fromLocalDevice ? Container() : new Padding(padding: EdgeInsets.all(2.0)),
         new Column(
           children: <Widget>[
             new MessageWindow(
@@ -26,10 +29,13 @@ class MessageWithMetadata extends StatelessWidget {
             new Timestamp(
               name: name,
               date: date,
+              textAlign: fromLocalDevice ? TextAlign.left : TextAlign.right,
             ),
             new Padding(padding: EdgeInsets.all(3.0)),
           ],
         ),
+        fromLocalDevice ? new Padding(padding: EdgeInsets.all(2.0)) : Container(),
+        fromLocalDevice ? new IconWindow(icon: icon) : Container(),
       ],
     );
   }
@@ -90,15 +96,16 @@ class MessageWindow extends StatelessWidget {
 class Timestamp extends StatelessWidget {
   final String name;
   final String date;
+  final TextAlign textAlign;
 
-  Timestamp({this.name, this.date});
+  Timestamp({this.name, this.date, this.textAlign});
 
   @override
   Widget build(BuildContext context) {
     return new Container(
         width: MediaQuery.of(context).size.width * 0.8,
         child: new RichText(
-          textAlign: TextAlign.right,
+          textAlign: textAlign,
           text: new TextSpan(
             children: <TextSpan>[
               new TextSpan(

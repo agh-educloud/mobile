@@ -1,34 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobile/screens/main/widgets/chat/chat.dart';
-import 'package:mobile/screens/main/widgets/chat/space.dart';
 import 'package:mobile/screens/main/widgets/degrees/degree.dart';
-import 'package:mobile/screens/main/widgets/homework/homework.dart';
 import 'package:mobile/screens/main/widgets/homework/space.dart';
 import 'package:mobile/screens/main/widgets/join/join.dart';
-import 'package:mobile/screens/main/widgets/title/title.dart';
+import 'package:mobile/widgets/page_title.dart';
 
-class Main extends StatefulWidget {
-  @override
-  _MainState createState() => _MainState();
-}
-
-class _MainState extends State<Main> {
-  bool isHomework = true;
-
-  void toggleToChat() {
-    setState(() {
-      // notify flutter that state changed
-      this.isHomework = false;
-    });
-  }
-
-  void toggleToHomework() {
-    setState(() {
-      this.isHomework = true;
-    });
-  }
-
+class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,15 +16,19 @@ class _MainState extends State<Main> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
           new Padding(padding: EdgeInsets.all(20.0)),
-          new MainWindowTitle(),
+          new PageTitle(
+            text: "Strona główna",
+          ),
           new DegreeMeanValueWindow(
             degree: 4.1,
             description: "ŚREDNIA OCEN Z ZADAŃ\nDOMOWYCH",
+            color: new Color(0xff6ab04c),
           ),
           new Padding(padding: EdgeInsets.all(5.0)),
           new DegreeMeanValueWindow(
             degree: 238.4,
             description: "LICZBA PUNKTÓW\nUZYSKANYCH\nW QUIZACH",
+            color: new Color(0xff27ae60),
           ),
           new Padding(padding: EdgeInsets.all(5.0)),
           new Container(
@@ -54,18 +36,13 @@ class _MainState extends State<Main> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                new HomeworkButton(
-                  toggleToHomework: toggleToHomework,
-                ),
                 new JoinButton(),
-                new ChatButton(
-                  toggleToChat: toggleToChat,
-                ),
+                new ChatButton(),
               ],
             ),
           ),
           new Padding(padding: EdgeInsets.all(5.0)),
-          isHomework ? new HomeworkSpace() : new ChatSpace()
+          new HomeworkSpace()
         ]))));
   }
 }

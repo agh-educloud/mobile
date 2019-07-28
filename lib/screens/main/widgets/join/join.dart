@@ -9,8 +9,8 @@ class JoinButton extends StatelessWidget {
     return new RoundButton(
       icon: new Icon(
         Icons.screen_share,
-        color: Color(0xff019875),
-        size: 24.0,
+        color: Color(0xff27ae60),
+        size: 28.0,
       ),
       buttonName: "DOŁĄCZ",
       onPressed: () {

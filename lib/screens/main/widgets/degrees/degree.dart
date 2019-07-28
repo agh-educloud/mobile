@@ -4,8 +4,9 @@ import 'package:flutter/widgets.dart';
 class DegreeMeanValueWindow extends StatelessWidget {
   final double degree;
   final String description;
+  final Color color;
 
-  DegreeMeanValueWindow({this.degree, this.description});
+  DegreeMeanValueWindow({this.degree, this.description, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class DegreeMeanValueWindow extends StatelessWidget {
       color: Colors.transparent,
       child: new Container(
         decoration: new BoxDecoration(
-            color: Color(0xffC4C4C4).withOpacity(0.19),
+            color: color,
             borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +49,7 @@ class DegreeMeanValueText extends StatelessWidget {
                 new TextSpan(
                   text: description,
                   style: new TextStyle(
-                      color: Colors.black,
+                      color:  Colors.white,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Oxygen',
                       fontSize: 13),
@@ -76,7 +77,7 @@ class DegreeMeanValue extends StatelessWidget {
             text: this.degree.toString(),
             style: new TextStyle(
                 fontWeight: FontWeight.bold,
-                color: new Color(0xff2c3e50),
+                color: Color(0xff130f40),
                 fontFamily: 'Oxygen',
                 fontSize: 60),
           )),

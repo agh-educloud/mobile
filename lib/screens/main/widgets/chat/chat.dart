@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mobile/screens/chat/chat.dart';
 import 'package:mobile/widgets/round_button.dart';
 
 class ChatButton extends StatelessWidget {
@@ -12,12 +13,16 @@ class ChatButton extends StatelessWidget {
     return new RoundButton(
       icon: new Icon(
         Icons.message,
-        color: Color(0xff019875),
-        size: 24.0,
+        color: Color(0xff27ae60),
+        size: 28.0,
       ),
       buttonName: "CZAT",
       onPressed: () {
-        this.toggleToChat();
+        debugPrint("Dołącz");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Chat()),
+        );
       },
     );
   }

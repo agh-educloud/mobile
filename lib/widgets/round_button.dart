@@ -12,7 +12,7 @@ class RoundButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return new SizedBox(
         height: 70,
-        width: 70,
+        width: 140,
         child: new FlatButton(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -27,9 +27,8 @@ class RoundButton extends StatelessWidget {
                       text: buttonName,
                       style: TextStyle(
                           color: Colors.black,
-                          fontWeight: FontWeight.w300,
                           fontFamily: 'Oxygen',
-                          fontSize: 8),
+                          fontSize: 12),
                     ),
                   ],
                 ),
@@ -39,7 +38,7 @@ class RoundButton extends StatelessWidget {
           ),
           onPressed: onPressed,
           shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(30.0)),
+              borderRadius: new BorderRadius.circular(12.0)),
           color: Color(0xffC4C4C4).withOpacity(0.19),
           splashColor: Colors.white70,
         ));
