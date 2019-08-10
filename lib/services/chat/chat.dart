@@ -10,49 +10,39 @@ import 'package:random_string/random_string.dart' as random;
 class Client {
   ClientChannel channel;
   ChatServiceClient stub;
-  String name;
+  User user;
   BuildContext context;
 
-  Client(String name, BuildContext context) {
+  Client(String name) {
     channel = new ClientChannel('0.0.0.0',
         port: 50052,
         options: const ChannelOptions(
             credentials: const ChannelCredentials.insecure()));
 
     stub = new ChatServiceClient(channel);
-    this.name = name;
-    this.context = context;
+    this.user = new User()
+      ..uuid = random.randomString(20)
+      ..name = name;
   }
 
-  Future<void> simulateChat() async {
-    Stream<ChatMessage> outgoingChatMessages() async* {
-      while (true) {
-        await new Future.delayed(new Duration(seconds: 5));
+  void sendMessage(String message, String timestamp) {
+    var grpcMessage = new Message()
+      ..content = message
+      ..timeStamp = timestamp;
 
-        var sender = new User()
-          ..uuid = "asfdsf"
-          ..name = this.name;
+    var grpcChatMessage = new ChatMessage()
+      ..sender = this.user
+      ..message = grpcMessage;
 
-        var message = new Message()
-          ..content = random.randomString(10)
-          ..timeStamp = random.randomString(4);
+    this.stub.sendMessage(grpcChatMessage);
+  }
 
-        var chatMessage = new ChatMessage()
-          ..sender = sender
-          ..message = message;
-
-        yield chatMessage;
-      }
-    }
-
-    final call = stub.exchangeMessages(outgoingChatMessages());
+  Future<void> receiveMessages() async {
+    final call = stub.receiveMessages(this.user);
     await for (var chatMessage in call) {
-      Scaffold.of(this.context).showSnackBar(new SnackBar(
-        content: new Text(
-            '${this.name} ${chatMessage.sender.name}: ${chatMessage.message.content}'),
-      ));
-//      debugPrint(
-//          '${this.name} ${chatMessage.sender.name}: ${chatMessage.message.content}');
+      debugPrint(chatMessage.message.content);
+      debugPrint(chatMessage.message.timeStamp);
     }
   }
+
 }

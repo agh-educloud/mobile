@@ -1,9 +1,11 @@
 syntax = "proto3";
 
 import "user.proto";
+import "status.proto";
 
 service ChatService {
-    rpc ExchangeMessages (stream ChatMessage) returns (stream ChatMessage);
+    rpc ReceiveMessages (User) returns (stream ChatMessage);
+    rpc SendMessage (ChatMessage) returns (Status);
 }
 
 message ChatMessage {

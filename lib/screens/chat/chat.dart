@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobile/screens/chat/widget/message.dart';
+import 'package:mobile/services/chat/chat.dart';
 import 'package:mobile/widgets/page_title.dart';
 
 final List<ChatMessageOnScreen> _messages = <ChatMessageOnScreen>[];
@@ -12,6 +13,7 @@ class Chat extends StatefulWidget {
 
 class ChatState extends State<Chat> {
   final TextEditingController _chatController = new TextEditingController();
+  final client = Client("Piotr");
 
   void _handleSubmit(String text) {
     if (text.length < 5) {
@@ -20,30 +22,20 @@ class ChatState extends State<Chat> {
     _chatController.clear();
 
     DateTime time = new DateTime.now();
+    String timestamp = time.hour.toString() + ":" + time.minute.toString();
+
+    client.sendMessage(text, timestamp);
 
     ChatMessageOnScreen message = new ChatMessageOnScreen(
       name: "Piotr",
       text: text,
-      date: time.hour.toString() + ":" + time.minute.toString(),
+      date: timestamp,
       icon: new Icon(Icons.cake, color: Colors.blue, size: 22.0),
       fromLocalDevice: true,
     );
-    debugPrint(text);
 
     setState(() {
       _messages.insert(0, message);
-    });
-
-    ChatMessageOnScreen message1 = new ChatMessageOnScreen(
-      name: "Ala",
-      text: text,
-      date: time.hour.toString() + ":" + time.minute.toString(),
-      icon: new Icon(Icons.camera_enhance, color: Colors.red, size: 22.0),
-      fromLocalDevice: false,
-    );
-
-    setState(() {
-      _messages.insert(0, message1);
     });
   }
 
@@ -86,7 +78,15 @@ class ChatState extends State<Chat> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    client.receiveMessages();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: new Column(
         children: <Widget>[
