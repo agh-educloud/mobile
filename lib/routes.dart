@@ -8,6 +8,7 @@ class Routes {
 
   Routes () {
     runApp(new MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Authorization',
       routes: routes,
       home: new Auth(),

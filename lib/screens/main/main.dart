@@ -42,7 +42,7 @@ class Main extends StatelessWidget {
             ),
           ),
           new Padding(padding: EdgeInsets.all(5.0)),
-          new HomeworkSpace()
+          new Homework()
         ]))));
   }
 }

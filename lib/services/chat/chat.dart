@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:mobile/generated/user.pb.dart';
-import 'package:path/path.dart';
 
 import '../../generated/chat.pb.dart';
 import '../../generated/chat.pbgrpc.dart';
