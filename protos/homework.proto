@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "status.proto";
+
+service PresenterHomeworkService {
+    rpc CreateHomework (Homework) returns (Status);
+}
+
+service UserHomeworkService {
+    rpc SendHomeworkSolution (Homework) returns (Status);
+    rpc GetHomeworks (Status) returns (Homeworks);
+}
+
+message Homework {
+    int32 homeworkUuid = 1;
+    string url = 2;
+}
+
+message Homeworks {
+    repeated Homework homework = 1;
+}
