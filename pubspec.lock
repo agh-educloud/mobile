@@ -83,6 +83,13 @@ packages:
       url: "git://github.com/tinylife-io/flutter_verification_code_input.git"
     source: git
     version: "0.1.1"
+  google_sign_in:
+    dependency: "direct main"
+    description:
+      name: google_sign_in
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.3.0+1"
   googleapis_auth:
     dependency: transitive
     description:

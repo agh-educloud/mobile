@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mobile/screens/chat/widget/message.dart';
 import 'package:mobile/services/chat/chat.dart';
 import 'package:mobile/widgets/page_title.dart';
+import 'package:mobile/globals.dart' as globals;
 
 final List<ChatMessageOnScreen> _messages = <ChatMessageOnScreen>[];
 
@@ -13,7 +14,7 @@ class Chat extends StatefulWidget {
 
 class ChatState extends State<Chat> {
   final TextEditingController _chatController = new TextEditingController();
-  final client = Client("Piotr");
+  final client = Client();
 
   void _handleSubmit(String text) {
     if (text.length < 5) {
@@ -27,7 +28,7 @@ class ChatState extends State<Chat> {
     client.sendMessage(text, timestamp);
 
     ChatMessageOnScreen message = new ChatMessageOnScreen(
-      name: "Piotr",
+      name: globals.user,
       text: text,
       date: timestamp,
       icon: new Icon(Icons.cake, color: Colors.blue, size: 22.0),
@@ -86,7 +87,6 @@ class ChatState extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: new Column(
         children: <Widget>[
