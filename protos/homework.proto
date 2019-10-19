@@ -14,6 +14,7 @@ service UserHomeworkService {
 message Homework {
     int32 homeworkUuid = 1;
     string url = 2;
+    string mailTo = 3;
 }
 
 message Homeworks {

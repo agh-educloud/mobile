@@ -21,6 +21,7 @@ class HomeworkState extends State<Homework> {
   HomeworkState() {
     Client().getHomework().then((value) {
       setState(() {
+        debugPrint("TUTAJ");
         homeworkLength = value.homework.length;
         allHomework = value.homework;
       });
@@ -76,8 +77,9 @@ class AllHomework extends StatelessWidget {
     List<Widget> list = new List<Widget>();
     for (var i = 0; i < allHomework.length; i++) {
       list.add(new HomeworkBar(
-        number: i + 1,
-        link: allHomework[i].url,
+          number: i + 1,
+          link: allHomework[i].url,
+          email: "XDD"
       ));
     }
     return new Column(children: list);
@@ -109,9 +111,10 @@ class AllHomework extends StatelessWidget {
 
 class HomeworkBar extends StatelessWidget {
   final String link;
+  final String email;
   final int number;
 
-  HomeworkBar({this.link, this.number});
+  HomeworkBar({this.link, this.number, this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -129,11 +132,30 @@ class HomeworkBar extends StatelessWidget {
                 fontFamily: 'Oxygen',
                 fontSize: 24),
           )),
-          new Icon(
-            Icons.info_outline,
-            color: Colors.lightGreen,
-            size: 24.0,
-          ),
+          new Row(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.info_outline,
+                  color: Colors.lightGreen,
+                  size: 24.0,
+                ),
+                onPressed: () {
+                  launch(link);
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.mail_outline,
+                  color: Colors.green,
+                  size: 24.0,
+                ),
+                onPressed: () {
+                launch("mailto:" + email + "?subject=Zadanie%20domowe&body=Dzien%20dobry,%20w%20zalaczniku%20przesylam%20rozwiazanie%20zadania%20domowego.");
+                },
+              ),
+            ],
+          )
         ],
       ),
     );
