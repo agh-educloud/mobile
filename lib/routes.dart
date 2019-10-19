@@ -9,7 +9,7 @@ class Routes {
   Routes () {
     runApp(new MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Authorization',
+      title: 'Chmura',
       routes: routes,
       home: new Auth(),
     ));

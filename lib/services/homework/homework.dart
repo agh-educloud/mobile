@@ -18,7 +18,6 @@ class Client {
   }
 
   Future<Homeworks> getHomework() async {
-    debugPrint("XDD");
     return this.stub.getHomeworks(Status());
   }
 }

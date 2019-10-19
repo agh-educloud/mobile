@@ -21,7 +21,6 @@ class HomeworkState extends State<Homework> {
   HomeworkState() {
     Client().getHomework().then((value) {
       setState(() {
-        debugPrint("TUTAJ");
         homeworkLength = value.homework.length;
         allHomework = value.homework;
       });

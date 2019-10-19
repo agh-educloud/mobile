@@ -39,8 +39,8 @@ class Client {
   Future<void> receiveMessages() async {
     final call = stub.receiveMessages(this.user);
     await for (var chatMessage in call) {
-      debugPrint(chatMessage.message.content);
-      debugPrint(chatMessage.message.timeStamp);
+//      debugPrint(chatMessage.message.content);
+//      debugPrint(chatMessage.message.timeStamp);
     }
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mobile/screens/feedback/feedback.dart' as fb;
 import 'package:mobile/screens/main/widgets/chat/chat.dart';
 import 'package:mobile/screens/main/widgets/degrees/degree.dart';
 import 'package:mobile/screens/main/widgets/homework/space.dart';
@@ -42,7 +43,22 @@ class Main extends StatelessWidget {
             ),
           ),
           new Padding(padding: EdgeInsets.all(5.0)),
-          new Homework()
+          new Homework(),
+                      new Padding(padding: EdgeInsets.all(5.0)),
+                      new FlatButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => fb.Feedback()),
+              );
+
+
+            },
+            textColor: Colors.blueGrey,
+            color: Colors.white,
+            child: const Text(
+                '                         OCEŃ PROWADZĄCEGO                         '),
+          ),
         ]))));
   }
 }

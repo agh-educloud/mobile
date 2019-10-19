@@ -14,7 +14,6 @@ class JoinButton extends StatelessWidget {
       ),
       buttonName: "DOŁĄCZ",
       onPressed: () {
-        debugPrint("Dołącz");
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Join()),
