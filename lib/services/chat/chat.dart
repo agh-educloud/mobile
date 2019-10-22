@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:mobile/generated/user.pb.dart';
-import 'package:path/path.dart';
 
 import '../../generated/chat.pb.dart';
 import '../../generated/chat.pbgrpc.dart';
 import 'package:random_string/random_string.dart' as random;
+import 'package:mobile/globals.dart' as globals;
 
 class Client {
   ClientChannel channel;
@@ -13,7 +13,7 @@ class Client {
   User user;
   BuildContext context;
 
-  Client(String name) {
+  Client() {
     channel = new ClientChannel('0.0.0.0',
         port: 50052,
         options: const ChannelOptions(
@@ -22,7 +22,7 @@ class Client {
     stub = new ChatServiceClient(channel);
     this.user = new User()
       ..uuid = random.randomString(20)
-      ..name = name;
+      ..name = globals.user;
   }
 
   void sendMessage(String message, String timestamp) {
@@ -40,8 +40,8 @@ class Client {
   Future<void> receiveMessages() async {
     final call = stub.receiveMessages(this.user);
     await for (var chatMessage in call) {
-      debugPrint(chatMessage.message.content);
-      debugPrint(chatMessage.message.timeStamp);
+//      debugPrint(chatMessage.message.content);
+//      debugPrint(chatMessage.message.timeStamp);
     }
   }
 

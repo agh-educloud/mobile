@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "status.proto";
+
+service FeedbackService {
+    rpc SendFeedback (Feedback) returns (Status);
+}
+
+message Feedback {
+    double note = 1;
+    string name = 2;
+    string comment = 3;
+}
+

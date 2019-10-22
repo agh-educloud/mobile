@@ -18,7 +18,6 @@ class ChatButton extends StatelessWidget {
       ),
       buttonName: "CZAT",
       onPressed: () {
-        debugPrint("Dołącz");
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Chat()),

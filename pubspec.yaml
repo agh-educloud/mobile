@@ -28,6 +28,10 @@ dependencies:
     git:
       url: git://github.com/tinylife-io/flutter_verification_code_input.git
   random_string: ^0.0.2
+  url_launcher: ^5.1.6
+  smooth_star_rating: ^1.0.3
+  google_sign_in: "^3.0.4"
+  toast: ^0.1.5
   grpc:
     git:
       url: https://github.com/grpc/grpc-dart
