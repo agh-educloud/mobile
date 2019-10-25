@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "734283107384",
+    "firebase_url": "https://malopolska-1f008.firebaseio.com",
+    "project_id": "malopolska-1f008",
+    "storage_bucket": "malopolska-1f008.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734283107384:android:a332f7525bc3c59eb22acd",
+        "android_client_info": {
+          "package_name": "pl.logx.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734283107384-rnefcv3ihssaf9cvnttbmh45knflb5bg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pl.logx.mobile",
+            "certificate_hash": "2ce5128989bc58e7a113402d9fbb023674194218"
+          }
+        },
+        {
+          "client_id": "734283107384-fj7m9rmtdompovc73r7jhkg0qmsc7f82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU0XScNMmef3irxenpCVbUbhgqkDGsuXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734283107384-fj7m9rmtdompovc73r7jhkg0qmsc7f82.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "734283107384-mf201a6hvlrm5aj3tvnisjpgfth37ckf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pl.logx.malopolska"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

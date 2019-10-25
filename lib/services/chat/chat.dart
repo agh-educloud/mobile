@@ -14,7 +14,7 @@ class Client {
   BuildContext context;
 
   Client() {
-    channel = new ClientChannel('0.0.0.0',
+    channel = new ClientChannel(globals.serverAddress,
         port: 50052,
         options: const ChannelOptions(
             credentials: const ChannelCredentials.insecure()));
