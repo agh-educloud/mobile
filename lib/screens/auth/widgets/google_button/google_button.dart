@@ -17,6 +17,11 @@ doLogin() async {
   await _googleSignIn.signIn();
 }
 
+doLogout() async {
+  await _googleSignIn.signOut();
+  return 'signOutWithGoogle succeeded....';
+}
+
 class GoogleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,8 +34,8 @@ class GoogleButton extends StatelessWidget {
       buttonName: "Zaloguj się kontem Google",
       onPressed: () {
         debugPrint("Google");
+//        doLogout();
         doLogin();
-
         _googleSignIn.onCurrentUserChanged
             .listen((GoogleSignInAccount account) async {
           if (account != null) {
