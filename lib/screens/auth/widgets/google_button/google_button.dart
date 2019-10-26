@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobile/screens/main/main.dart';
 import 'package:mobile/widgets/long_button.dart';
 import 'package:mobile/globals.dart' as globals;
+import 'dart:io' show Platform;
 
 GoogleSignIn _googleSignIn = new GoogleSignIn(
   scopes: [
@@ -34,27 +35,30 @@ class GoogleButton extends StatelessWidget {
       buttonName: "Zaloguj się kontem Google",
       onPressed: () {
         debugPrint("Google");
-//        doLogout();
-//        Navigator.push(
-//          context,
-//          MaterialPageRoute(builder: (context) => Main()),
-//        );
-        doLogin();
-        _googleSignIn.onCurrentUserChanged
-            .listen((GoogleSignInAccount account) async {
-          if (account != null) {
-            // user logged
-            debugPrint(account.displayName);
-            globals.user = account.displayName;
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Main()),
-            );
-          } else {
-            // user NOT logged
-            debugPrint("YYYY");
-          }
-        });
+
+        if (Platform.isAndroid) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Main()),
+          );
+        } else if (Platform.isIOS) {
+          doLogin();
+          _googleSignIn.onCurrentUserChanged
+              .listen((GoogleSignInAccount account) async {
+            if (account != null) {
+              // user logged
+              debugPrint(account.displayName);
+              globals.user = account.displayName;
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Main()),
+              );
+            } else {
+              // user NOT logged
+              debugPrint("YYYY");
+            }
+          });
+        }
       },
     );
   }

@@ -56,6 +56,8 @@ class Client {
         insert(message);
       }
     }
+
+    debugPrint("CHAT FINISHED");
   }
 }
 
