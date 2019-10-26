@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:mobile/generated/user.pb.dart';
+import 'package:mobile/screens/chat/widget/message.dart';
 
 import '../../generated/chat.pb.dart';
 import '../../generated/chat.pbgrpc.dart';
@@ -21,7 +22,7 @@ class Client {
 
     stub = new ChatServiceClient(channel);
     this.user = new User()
-      ..uuid = random.randomString(20)
+      ..uuid = globals.uuid
       ..name = globals.user;
   }
 
@@ -32,17 +33,33 @@ class Client {
 
     var grpcChatMessage = new ChatMessage()
       ..sender = this.user
+      ..code = globals.mainClass
       ..message = grpcMessage;
-
     this.stub.sendMessage(grpcChatMessage);
+    debugPrint("SENT MESSAGE");
   }
 
-  Future<void> receiveMessages() async {
+  Future<void> receiveMessages(insert) async {
     final call = stub.receiveMessages(this.user);
     await for (var chatMessage in call) {
-//      debugPrint(chatMessage.message.content);
-//      debugPrint(chatMessage.message.timeStamp);
+      debugPrint(":OO");
+      if (chatMessage.code == globals.mainClass) {
+        ChatMessageOnScreen message = new ChatMessageOnScreen(
+          name: chatMessage.sender.name,
+          text: chatMessage.message.content,
+          date: chatMessage.message.timeStamp,
+          icon: getIcon(chatMessage.sender.uuid == globals.uuid),
+          fromLocalDevice: chatMessage.sender.uuid == globals.uuid,
+        );
+        debugPrint(chatMessage.sender.uuid);
+        debugPrint(globals.uuid);
+        insert(message);
+      }
     }
   }
+}
 
+Icon getIcon(bool local) {
+  if (local) return new Icon(Icons.ac_unit, color: Colors.red, size: 22.0);
+  return new Icon(Icons.accessibility_new, color: Colors.blue, size: 22.0);
 }

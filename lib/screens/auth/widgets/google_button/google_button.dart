@@ -35,6 +35,10 @@ class GoogleButton extends StatelessWidget {
       onPressed: () {
         debugPrint("Google");
 //        doLogout();
+//        Navigator.push(
+//          context,
+//          MaterialPageRoute(builder: (context) => Main()),
+//        );
         doLogin();
         _googleSignIn.onCurrentUserChanged
             .listen((GoogleSignInAccount account) async {
