@@ -6,6 +6,12 @@ import 'package:mobile/screens/main/widgets/degrees/degree.dart';
 import 'package:mobile/screens/main/widgets/homework/space.dart';
 import 'package:mobile/screens/main/widgets/join/join.dart';
 import 'package:mobile/widgets/page_title.dart';
+import 'package:mobile/globals.dart' as globals;
+
+String getName() {
+  if (globals.mainClass == "EMPTY") return "Strona główna";
+  return "Strona główna (" + globals.mainClass + ")";
+}
 
 class Main extends StatelessWidget {
   @override
@@ -18,7 +24,7 @@ class Main extends StatelessWidget {
                     children: <Widget>[
           new Padding(padding: EdgeInsets.all(20.0)),
           new PageTitle(
-            text: "Strona główna",
+            text: getName(),
           ),
           new DegreeMeanValueWindow(
             degree: 4.1,
@@ -44,15 +50,13 @@ class Main extends StatelessWidget {
           ),
           new Padding(padding: EdgeInsets.all(5.0)),
           new Homework(),
-                      new Padding(padding: EdgeInsets.all(5.0)),
-                      new FlatButton(
+          new Padding(padding: EdgeInsets.all(5.0)),
+          new FlatButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => fb.Feedback()),
               );
-
-
             },
             textColor: Colors.blueGrey,
             color: Colors.white,

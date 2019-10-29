@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_verification_code_input/flutter_verification_code_input.dart';
+import 'package:mobile/generated/status.pb.dart';
+import 'package:mobile/screens/main/main.dart';
+import 'package:mobile/services/class/class.dart';
+import 'package:toast/toast.dart';
+import 'package:mobile/globals.dart' as globals;
 
 class Join extends StatelessWidget {
   @override
@@ -28,13 +33,25 @@ class Join extends StatelessWidget {
                 new Padding(padding: EdgeInsets.all(20.0)),
                 new VerificationCodeInput(
                   keyboardType: TextInputType.number,
-                  textStyle: TextStyle(fontSize: 25.0, color: Color(0xff019875)),
+                  textStyle:
+                      TextStyle(fontSize: 25.0, color: Color(0xff019875)),
                   length: 5,
-                  onCompleted: (String value) {
-                    print(value);
-                    Scaffold.of(context).showSnackBar(new SnackBar(
-                      content: new Text("Niepoprawny kod"),
-                    ));
+                  onCompleted: (String code) {
+
+                    Client().canJoinClass(code).then((value) {
+                      if (value.code == Status_Code.OK) {
+                        Toast.show("Dołączono do zajęć", context,
+                            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                        globals.mainClass = code;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Main()),
+                        );
+                      } else {
+                        Toast.show("Niepoprawny kod", context,
+                            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                      }
+                    });
                   },
                 )
               ],

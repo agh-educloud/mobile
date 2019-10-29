@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+import "status.proto";
+import "quiz.proto";
+import "homework.proto";
+import "chat.proto";
+import "user.proto";
+import "feedback.proto";
+
+
+service PresenterClassService {
+    rpc CreateClass (ClassCreationRequest) returns (ClassCreationResponse);
+    rpc UpdateClass (ClassUpdateRequest) returns (Status);
+    rpc DeleteClass (ClassDeleteRequest) returns (Status);
+
+    rpc StartClass (ClassStartRequest) returns (stream ChatMessage);
+    rpc EndClass (ClassEndRequest) returns (Status);
+}
+
+service UserClassService {
+    rpc JoinClass (JoinClassRequest) returns (Status);
+    rpc JoinAssigmentLoop(JoinAssigmentLoopRequest) returns (stream Assigment);
+    rpc SendMessageToPresenter (ChatMessage) returns (Status);
+    rpc SendFeedback (Feedback) returns (Status);
+}
+
+message Class {
+    string name = 1;
+    string topic = 2;
+    repeated QuizQuestion quizQuestion = 3;
+    repeated Homework homework = 4;
+    bytes presentation = 5;
+}
+
+message ClassCreationRequest {
+    Class class = 1;
+}
+
+message ClassCreationResponse {
+    int32 classUuid = 1;
+    int32 secretCode = 2;
+    Status error = 3;
+}
+
+message ClassUpdateRequest {
+    int32 classUuid = 1;
+    Class class = 2;
+}
+
+message ClassDeleteRequest {
+    int32 classUuid = 1;
+}
+
+message ClassStartRequest {
+    int32 classUuid = 1;
+}
+
+message ClassEndRequest {
+    int32 classUuid = 1;
+}
+
+message JoinClassRequest {
+    string secretCode = 1;
+    User user = 2;
+}
+
+message Assigment {
+    oneof event {
+        QuizQuestion quizQuestion = 1;
+        Homework homework = 2;
+    }
+}
+
+message JoinAssigmentLoopRequest{
+    User user = 1;
+}
+

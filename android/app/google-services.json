@@ -8,14 +8,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:734283107384:android:a332f7525bc3c59eb22acd",
+        "mobilesdk_app_id": "1:734283107384:android:32e70791c8de9022b22acd",
         "android_client_info": {
           "package_name": "pl.logx.mobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "734283107384-rnefcv3ihssaf9cvnttbmh45knflb5bg.apps.googleusercontent.com",
+          "client_id": "734283107384-32koik8h3datbem3fv9tb0pai622hlho.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "pl.logx.mobile",

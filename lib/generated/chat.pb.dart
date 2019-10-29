@@ -14,6 +14,7 @@ class ChatMessage extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('ChatMessage')
     ..a<$0.User>(1, 'sender', $pb.PbFieldType.OM, $0.User.getDefault, $0.User.create)
     ..a<Message>(2, 'message', $pb.PbFieldType.OM, Message.getDefault, Message.create)
+    ..aOS(3, 'code')
     ..hasRequiredFields = false
   ;
 
@@ -38,6 +39,11 @@ class ChatMessage extends $pb.GeneratedMessage {
   set message(Message v) { setField(2, v); }
   $core.bool hasMessage() => $_has(1);
   void clearMessage() => clearField(2);
+
+  $core.String get code => $_getS(2, '');
+  set code($core.String v) { $_setString(2, v); }
+  $core.bool hasCode() => $_has(2);
+  void clearCode() => clearField(3);
 }
 
 class Message extends $pb.GeneratedMessage {

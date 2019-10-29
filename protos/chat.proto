@@ -11,6 +11,7 @@ service ChatService {
 message ChatMessage {
     User sender = 1;
     Message message = 2;
+    string code = 3;
 }
 
 message Message {
