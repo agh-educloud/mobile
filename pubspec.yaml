@@ -39,6 +39,8 @@ dependencies:
       resolved-ref: af63deb
   protobuf: ^0.13.11
   faker: ^1.1.0
+  firebase_storage: ^3.0.6
+  image_picker: ^0.6.1
 
 dev_dependencies:
   flutter_test:

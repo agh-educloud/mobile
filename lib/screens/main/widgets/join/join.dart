@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobile/screens/join/join.dart';
 import 'package:mobile/widgets/round_button.dart';
+import 'package:mobile/globals.dart' as globals;
 
 class JoinButton extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return new RoundButton(

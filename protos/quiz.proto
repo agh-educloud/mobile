@@ -3,44 +3,29 @@ syntax = "proto3";
 
 import "status.proto";
 
-service PresenterQuizService {
-    rpc DelegateQuizQuestion (QuizQuestion) returns (Status);
-    rpc GetQuizQuestionStatistics (QuizQuestion) returns (stream QuizQuestionStatistics);
+service QuizService {
+    rpc WaitForQuestions (QuizRequest) returns (stream Question);
+    rpc AnswerQuestion (QuizAnswer) returns (Status);
 }
 
-service UserQuizService {
-    rpc AnswerQuizQuestion (QuizQuestionAnswer) returns (QuizQuestionResponse);
+message QuizRequest {
+    string userId = 1;
 }
 
-message QuizQuestion {
-    int32 uuid = 1;
-    string question = 2;
-    string hint = 3;
-    repeated Option option = 4;
+message QuizAnswer {
+    string userId = 1;
+    string answer = 2;
+    bytes photo = 3;
 }
 
-message Option {
-    string value = 1;
+message Question {
+    string classId = 1;
+    string groupId = 2;
+    repeated string answers = 3;
+    bool photoQuestion = 4;
+    bool closedQuestion = 5;
+    bool openQuestion = 6;
+
 }
 
-message QuizQuestionCreation {
-    QuizQuestion quizQuestion = 1;
-    Option answer = 2;
-}
-
-message QuizQuestionAnswer {
-    int32 uuid = 1;
-    Option answer = 2;
-}
-
-message QuizQuestionResponse {
-    int32 questionUuid = 1;
-    Option correctAnswer = 2;
-}
-
-message QuizQuestionStatistics {
-    int32 questionUuid = 1;
-    float percentageOfCorrectAnswers = 2;
-    int32 participants = 3;
-}
 

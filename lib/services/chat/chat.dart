@@ -33,31 +33,34 @@ class Client {
 
     var grpcChatMessage = new ChatMessage()
       ..sender = this.user
-      ..code = globals.mainClass
+      ..code =
+          globals.subClass != "EMPTY" ? globals.subClass : globals.mainClass
       ..message = grpcMessage;
     this.stub.sendMessage(grpcChatMessage);
     debugPrint("SENT MESSAGE");
   }
 
   Future<void> receiveMessages(insert) async {
-    final call = stub.receiveMessages(this.user);
-    await for (var chatMessage in call) {
-      debugPrint(":OO");
-      if (chatMessage.code == globals.mainClass) {
-        ChatMessageOnScreen message = new ChatMessageOnScreen(
-          name: chatMessage.sender.name,
-          text: chatMessage.message.content,
-          date: chatMessage.message.timeStamp,
-          icon: getIcon(chatMessage.sender.uuid == globals.uuid),
-          fromLocalDevice: chatMessage.sender.uuid == globals.uuid,
-        );
-        debugPrint(chatMessage.sender.uuid);
-        debugPrint(globals.uuid);
-        insert(message);
-      }
+    while (true) {
+      try {
+        final call = stub.receiveMessages(this.user);
+        await for (var chatMessage in call) {
+          if (chatMessage.code == globals.mainClass ||
+              chatMessage.code == globals.subClass) {
+            ChatMessageOnScreen message = new ChatMessageOnScreen(
+              name: chatMessage.sender.name,
+              text: chatMessage.message.content,
+              date: chatMessage.message.timeStamp,
+              icon: getIcon(chatMessage.sender.uuid == globals.uuid),
+              fromLocalDevice: chatMessage.sender.uuid == globals.uuid,
+            );
+            debugPrint(chatMessage.sender.uuid);
+            debugPrint(globals.uuid);
+            insert(message);
+          }
+        }
+      } catch (_) {}
     }
-
-    debugPrint("CHAT FINISHED");
   }
 }
 

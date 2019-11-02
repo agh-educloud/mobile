@@ -5,6 +5,7 @@ import 'package:mobile/services/feedback/feedback.dart';
 import 'package:mobile/widgets/page_title.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:toast/toast.dart';
+import 'package:mobile/globals.dart' as globals;
 
 double rating = 0;
 TextEditingController name = new TextEditingController();
@@ -21,11 +22,12 @@ class FeedbackState extends State<Feedback> {
   int homeworkLength = 0;
   var allHomework;
 
-  FeedbackState() {
-  }
+  FeedbackState() {}
 
   @override
   Widget build(BuildContext context) {
+    globals.context = context;
+
     return Scaffold(
       body: new Column(
         children: <Widget>[

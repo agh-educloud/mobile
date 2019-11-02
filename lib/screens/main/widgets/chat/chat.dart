@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobile/screens/chat/chat.dart';
+import 'package:mobile/screens/quiz/quiz.dart';
 import 'package:mobile/widgets/round_button.dart';
 
 class ChatButton extends StatelessWidget {

@@ -42,7 +42,7 @@ packages:
       name: crypto
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.6"
+    version: "2.1.3"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -56,14 +56,28 @@ packages:
       name: faker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
+  firebase_core:
+    dependency: transitive
+    description:
+      name: firebase_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0+9"
+  firebase_storage:
+    dependency: "direct main"
+    description:
+      name: firebase_storage
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.6"
   fixnum:
     dependency: transitive
     description:
       name: fixnum
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.10.9"
+    version: "0.10.11"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -79,10 +93,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "5ebc1c1145cd72ed4e27fc29c9e3136753667fe8"
+      resolved-ref: dc52ada854eee3ff6ee2ca26a9eaa9c651faa1f7
       url: "git://github.com/tinylife-io/flutter_verification_code_input.git"
     source: git
-    version: "0.1.1"
+    version: "0.1.2"
   google_sign_in:
     dependency: "direct main"
     description:
@@ -96,7 +110,7 @@ packages:
       name: googleapis_auth
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.7"
+    version: "0.2.10"
   gradient_text:
     dependency: "direct main"
     description:
@@ -109,7 +123,7 @@ packages:
     description:
       path: "."
       ref: grpc-web
-      resolved-ref: "8aa5b51760d520db87364ef5f2d10bc8227f236b"
+      resolved-ref: "172cda21d2667351c616541a7b68caa2f7206be9"
       url: "https://github.com/grpc/grpc-dart"
     source: git
     version: "1.1.0"
@@ -134,6 +148,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.3"
+  image_picker:
+    dependency: "direct main"
+    description:
+      name: image_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.1+10"
   matcher:
     dependency: transitive
     description:
@@ -168,7 +189,7 @@ packages:
       name: protobuf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.12"
+    version: "0.13.16+1"
   quiver:
     dependency: transitive
     description:
@@ -257,7 +278,7 @@ packages:
       name: url_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.1.6"
+    version: "5.2.1"
   vector_math:
     dependency: transitive
     description:
