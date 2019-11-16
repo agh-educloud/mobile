@@ -33,7 +33,8 @@ class QuizState extends State<Quiz> {
     File image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
     //Create a reference to the location you want to upload to in firebase
-    StorageReference reference = _storage.ref().child("images/" + random.randomString(10));
+    StorageReference reference =
+        _storage.ref().child("images/" + random.randomString(10));
 
     //Upload the file to firebase
     StorageUploadTask uploadTask = reference.putFile(image);
@@ -181,7 +182,7 @@ class QuizState extends State<Quiz> {
               buttonName: "Wybierz zdjecie z telefonu",
               onPressed: () {
                 uploadPic().then((value) {
-                  debugPrint(value);
+                  prefix0.Client().answerQuestion(QuizAnswer()..answer = value);
                   globals.wasAnswerCorrect = true;
                   Navigator.push(
                     context,
