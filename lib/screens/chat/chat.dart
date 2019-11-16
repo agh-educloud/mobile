@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:mobile/screens/chat/widget/message.dart';
 import 'package:mobile/services/chat/chat.dart';
 import 'package:mobile/widgets/page_title.dart';
+import 'package:mobile/globals.dart' as globals;
 
-final List<ChatMessageOnScreen> _messages = <ChatMessageOnScreen>[];
 
 class Chat extends StatefulWidget {
   @override
@@ -64,17 +64,19 @@ class ChatState extends State<Chat> {
   @override
   void initState() {
     super.initState();
+    globals.registeredSetState = () => setState(() => null);
     Client().receiveMessages(insert);
   }
 
   void insert(message) {
     setState(() {
-      _messages.insert(0, message);
+      globals.messages.insert(0, message);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    globals.context = context;
     return Scaffold(
       body: new Column(
         children: <Widget>[
@@ -86,8 +88,8 @@ class ChatState extends State<Chat> {
             child: ListView.builder(
               padding: new EdgeInsets.all(8.0),
               reverse: true,
-              itemBuilder: (_, int index) => _messages[index],
-              itemCount: _messages.length,
+              itemBuilder: (_, int index) => globals.messages[index],
+              itemCount: globals.messages.length,
             ),
           ),
           new Padding(padding: EdgeInsets.all(10.0)),

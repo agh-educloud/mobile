@@ -5,6 +5,7 @@ import 'package:mobile/screens/main/widgets/chat/chat.dart';
 import 'package:mobile/screens/main/widgets/degrees/degree.dart';
 import 'package:mobile/screens/main/widgets/homework/space.dart';
 import 'package:mobile/screens/main/widgets/join/join.dart';
+import 'package:mobile/services/chat/chat.dart';
 import 'package:mobile/widgets/page_title.dart';
 import 'package:mobile/globals.dart' as globals;
 
@@ -14,8 +15,17 @@ String getName() {
 }
 
 class Main extends StatelessWidget {
+  Main() {
+    void insert(message) {
+        globals.messages.insert(0, message);
+        globals.registeredSetState();
+    }
+    Client().receiveMessages(insert);
+  }
+
   @override
   Widget build(BuildContext context) {
+    globals.context = context;
     return Scaffold(
         body: new SingleChildScrollView(
             child: new Center(

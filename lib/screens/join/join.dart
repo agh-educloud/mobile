@@ -6,6 +6,7 @@ import 'package:mobile/screens/main/main.dart';
 import 'package:mobile/services/class/class.dart';
 import 'package:toast/toast.dart';
 import 'package:mobile/globals.dart' as globals;
+import 'package:mobile/services/quiz/quiz.dart' as quiz;
 
 class Join extends StatelessWidget {
   @override
@@ -37,12 +38,14 @@ class Join extends StatelessWidget {
                       TextStyle(fontSize: 25.0, color: Color(0xff019875)),
                   length: 5,
                   onCompleted: (String code) {
-
                     Client().canJoinClass(code).then((value) {
                       if (value.code == Status_Code.OK) {
                         Toast.show("Dołączono do zajęć", context,
                             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
                         globals.mainClass = code;
+
+                        quiz.Client().waitForQuestion();
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Main()),
