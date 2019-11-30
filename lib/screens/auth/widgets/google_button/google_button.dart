@@ -36,29 +36,47 @@ class GoogleButton extends StatelessWidget {
       onPressed: () {
         debugPrint("Google");
 
-        if (Platform.isAndroid) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Main()),
-          );
-        } else if (Platform.isIOS) {
-          doLogin();
-          _googleSignIn.onCurrentUserChanged
-              .listen((GoogleSignInAccount account) async {
-            if (account != null) {
-              // user logged
-              debugPrint(account.displayName);
-              globals.user = account.displayName;
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Main()),
-              );
-            } else {
-              // user NOT logged
-              debugPrint("YYYY");
-            }
-          });
-        }
+        doLogin();
+        _googleSignIn.onCurrentUserChanged
+            .listen((GoogleSignInAccount account) async {
+          if (account != null) {
+            // user logged
+            debugPrint(account.displayName);
+            globals.user = account.displayName;
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Main()),
+            );
+          } else {
+            // user NOT logged
+            debugPrint("YYYY");
+          }
+        });
+
+//        if (Platform.isAndroid) {
+//          Navigator.push(
+//            context,
+//            MaterialPageRoute(builder: (context) => Main()),
+//          );
+//        } else if (Platform.isIOS) {
+//          doLogin();
+//          _googleSignIn.onCurrentUserChanged
+//              .listen((GoogleSignInAccount account) async {
+//            if (account != null) {
+//              // user logged
+//              debugPrint(account.displayName);
+//              globals.user = account.displayName;
+//              Navigator.push(
+//                context,
+//                MaterialPageRoute(builder: (context) => Main()),
+//              );
+//            } else {
+//              // user NOT logged
+//              debugPrint("YYYY");
+//            }
+//          });
+//        }
+//
       },
     );
   }
