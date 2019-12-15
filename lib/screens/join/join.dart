@@ -1,3 +1,4 @@
+import 'package:code_input/code_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_verification_code_input/flutter_verification_code_input.dart';
@@ -57,6 +58,13 @@ class Join extends StatelessWidget {
                     });
                   },
                 )
+
+//                CodeInput(
+//                  length: 4,
+//                  keyboardType: TextInputType.number,
+//                  builder: CodeInputBuilders.lightCircle(),
+//                  onFilled: (value) => print('Your input is $value.'),
+//                )
               ],
             )),
             // Add box decoration

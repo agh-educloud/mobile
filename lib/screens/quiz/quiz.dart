@@ -63,19 +63,19 @@ class QuizState extends State<Quiz> {
     _timer = new Timer.periodic(
       oneSec,
       (Timer timer) => setState(
-            () {
-              if (start < 1) {
-                timer.cancel();
-                globals.wasAnswerCorrect = false;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Answer()),
-                );
-              } else {
-                start = start - 1;
-              }
-            },
-          ),
+        () {
+          if (start < 1) {
+            timer.cancel();
+            globals.wasAnswerCorrect = false;
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Answer()),
+            );
+          } else {
+            start = start - 1;
+          }
+        },
+      ),
     );
   }
 
@@ -129,8 +129,12 @@ class QuizState extends State<Quiz> {
   }
 
   void answer(answer) {
+    debugPrint("SENDING" + answer);
+
     prefix0.Client()
-        .answerQuestion(QuizAnswer()..answer = answer)
+        .answerQuestion(QuizAnswer()
+          ..answer = answer
+          ..userId = globals.uuid)
         .then((value) {
       if (value.code == Status_Code.OK) {
         globals.wasAnswerCorrect = true;

@@ -8,7 +8,7 @@ import 'generated/quiz.pb.dart';
 
 String user = random.randomString(5);
 String uuid = random.randomString(10);
-String serverAddress = "192.168.55.103";
+String serverAddress = "192.168.43.114";
 
 String mainClass = "EMPTY";
 String subClass = "EMPTY";
