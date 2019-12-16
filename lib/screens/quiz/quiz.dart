@@ -186,7 +186,9 @@ class QuizState extends State<Quiz> {
               buttonName: "Wybierz zdjecie z telefonu",
               onPressed: () {
                 uploadPic().then((value) {
-                  prefix0.Client().answerQuestion(QuizAnswer()..answer = value);
+                  prefix0.Client().answerQuestion(QuizAnswer()
+                    ..answer = value
+                    ..userId = globals.uuid);
                   globals.wasAnswerCorrect = true;
                   Navigator.push(
                     context,
